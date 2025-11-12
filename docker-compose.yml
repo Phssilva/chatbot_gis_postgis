@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  # PostGIS Database
+  postgis:
+    image: postgis/postgis:17-3.5
+    container_name: geospatial-db
+    environment:
+      POSTGRES_DB: geospatial
+      POSTGRES_USER: geouser
+      POSTGRES_PASSWORD: geopass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgis_data:/var/lib/postgresql/data
+      - ./database/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U geouser -d geospatial"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # GeoServer
+  geoserver:
+    image: kartoza/geoserver:2.25.2
+    container_name: geoserver
+    environment:
+      GEOSERVER_ADMIN_USER: admin
+      GEOSERVER_ADMIN_PASSWORD: geoserver
+      INITIAL_MEMORY: 2G
+      MAXIMUM_MEMORY: 4G
+      STABLE_EXTENSIONS: "wps,csw"
+      COMMUNITY_EXTENSIONS: ""
+    ports:
+      - "8080:8080"
+    volumes:
+      - geoserver_data:/opt/geoserver/data_dir
+    depends_on:
+      postgis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # Next.js Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: geospatial-frontend
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_GEOSERVER_URL=http://localhost:8080/geoserver
+      - DATABASE_URL=postgresql://geouser:geopass@postgis:5432/geospatial
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+      - /app/.next
+    depends_on:
+      - postgis
+      - geoserver
+    restart: unless-stopped
+
+volumes:
+  postgis_data:
+  geoserver_data:

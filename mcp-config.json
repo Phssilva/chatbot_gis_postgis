@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "geospatial_db": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-postgres",
+        "postgresql://geouser:geopass@localhost:5432/geospatial"
+      ]
+    }
+  }
+}
