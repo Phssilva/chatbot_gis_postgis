@@ -1,6 +1,6 @@
 # 🚀 Guia de Início Rápido
 
-## Passo 1: Configure a OpenAI API Key
+## Passo 1: Configure a API Key da IA
 
 ```bash
 # Copie o arquivo de exemplo
@@ -10,17 +10,28 @@ cp .env.example .env
 nano .env
 ```
 
-Adicione sua chave OpenAI:
+**Escolha uma opção:**
+
+### Opção A: Gemini (Gratuito - Recomendado) 🌟
+```bash
+AI_PROVIDER=gemini
+GEMINI_API_KEY=AIzaSy...  # Obtenha em: https://aistudio.google.com/app/apikey
 ```
+
+### Opção B: OpenAI
+```bash
+AI_PROVIDER=openai
 OPENAI_API_KEY=sk-...
 ```
+
+💡 **Dica**: Gemini é gratuito e não precisa de cartão de crédito!
 
 ## Passo 2: Configure o Frontend
 
 ```bash
 cd frontend
 cp .env.example .env
-nano .env  # Adicione a mesma OPENAI_API_KEY
+nano .env  # Adicione as mesmas configurações do Passo 1
 cd ..
 ```
 

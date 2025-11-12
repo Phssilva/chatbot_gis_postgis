@@ -50,6 +50,9 @@ services:
       - NODE_ENV=development
       - NEXT_PUBLIC_GEOSERVER_URL=http://localhost:8080/geoserver
       - DATABASE_URL=postgresql://geouser:geopass@postgis:5432/geospatial
+      - AI_PROVIDER=${AI_PROVIDER:-gemini}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
     ports:
       - "3000:3000"
     volumes:

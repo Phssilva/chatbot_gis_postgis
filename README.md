@@ -29,7 +29,8 @@ Sistema de chatbot inteligente para consulta de dados geoespaciais usando lingua
 ## 📋 Pré-requisitos
 
 - Docker e Docker Compose
-- OpenAI API Key (para o chatbot funcionar)
+- **OpenAI API Key** OU **Google Gemini API Key** (para o chatbot funcionar)
+  - 💡 **Recomendado**: Use Gemini - é gratuito! Veja [GEMINI_SETUP.md](GEMINI_SETUP.md)
 - 4GB+ RAM disponível
 - Portas livres: 3000, 5432, 8080
 
@@ -43,16 +44,30 @@ cd /home/phsilva/UFSC/test_mcp
 # Copie o arquivo de exemplo
 cp .env.example .env
 
-# Edite o .env e adicione sua OpenAI API Key
+# Edite o .env e adicione sua API Key
 nano .env
 ```
+
+**Opção A - Usar Gemini (Gratuito, Recomendado):**
+```bash
+AI_PROVIDER=gemini
+GEMINI_API_KEY=sua_chave_aqui  # Obtenha em: https://aistudio.google.com/app/apikey
+```
+
+**Opção B - Usar OpenAI:**
+```bash
+AI_PROVIDER=openai
+OPENAI_API_KEY=sk-sua_chave_aqui
+```
+
+📖 **Guia completo do Gemini**: [GEMINI_SETUP.md](GEMINI_SETUP.md)
 
 ### 2. Configure o Frontend
 
 ```bash
 cd frontend
 cp .env.example .env
-nano .env  # Adicione sua OPENAI_API_KEY
+nano .env  # Adicione as mesmas configurações do passo 1
 ```
 
 ### 3. Inicie os Containers
