@@ -2,7 +2,7 @@
 
 Sistema de chatbot inteligente para consulta de dados geoespaciais usando linguagem natural, integrado com PostGIS, GeoServer e visualização em mapa interativo.
 
-## 🎯 Funcionalidades
+## Funcionalidades
 
 - **Chatbot com IA**: Faça perguntas em português sobre dados espaciais
 - **SQL Automático**: IA converte perguntas em queries SQL/PostGIS
@@ -10,7 +10,7 @@ Sistema de chatbot inteligente para consulta de dados geoespaciais usando lingua
 - **Dados Brasileiros**: Estados, rodovias e cidades pré-carregados
 - **Interface Moderna**: Next.js 15 + TailwindCSS + shadcn/ui
 
-## 🏗️ Arquitetura
+## Arquitetura
 
 ```
 ┌─────────────┐     ┌──────────────┐     ┌──────────────┐
@@ -30,11 +30,11 @@ Sistema de chatbot inteligente para consulta de dados geoespaciais usando lingua
 
 - Docker e Docker Compose
 - **OpenAI API Key** OU **Google Gemini API Key** (para o chatbot funcionar)
-  - 💡 **Recomendado**: Use Gemini - é gratuito! Veja [GEMINI_SETUP.md](GEMINI_SETUP.md)
+  - **Recomendado**: Use Gemini - é gratuito! Veja [GEMINI_SETUP.md](GEMINI_SETUP.md)
 - 4GB+ RAM disponível
 - Portas livres: 3000, 5432, 8080
 
-## 🚀 Instalação e Uso
+## Instalação e Uso
 
 ### 1. Clone e Configure
 
@@ -96,7 +96,7 @@ docker-compose logs -f
   - Usuário: `admin`
   - Senha: `geoserver`
 
-## 📊 Dados Incluídos
+## Dados Incluídos
 
 ### Estados (geo.estados)
 - 6 estados brasileiros (SP, RJ, MG, PR, SC, RS)
@@ -113,7 +113,7 @@ docker-compose logs -f
 - Geometrias (pontos)
 - População
 
-## 💬 Exemplos de Perguntas
+## Exemplos de Perguntas
 
 ```
 Quantas rodovias tem em cada estado?
@@ -125,7 +125,7 @@ Quais rodovias passam por Santa Catarina?
 Qual a densidade populacional dos estados?
 ```
 
-## 🗺️ Configurando GeoServer
+## Configurando GeoServer
 
 ### Primeira Configuração (Opcional)
 
@@ -142,7 +142,7 @@ Qual a densidade populacional dos estados?
    - **passwd**: `geopass`
 5. Publique as camadas: `estados`, `rodovias`, `cidades`
 
-## 🔧 Comandos Úteis
+## Comandos Úteis
 
 ```bash
 # Ver logs de um serviço específico
@@ -166,7 +166,7 @@ docker-compose exec postgis psql -U geouser -d geospatial
 docker-compose exec frontend sh
 ```
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 test_mcp/
@@ -195,7 +195,7 @@ test_mcp/
 └── README.md
 ```
 
-## 🔌 Integrando com MCP (Model Context Protocol)
+## Integrando com MCP (Model Context Protocol)
 
 Para usar o MCP Server Postgres localmente no Cursor/Windsurf:
 
@@ -230,7 +230,7 @@ Agora você pode fazer perguntas diretamente no chat do editor:
 @geospatial_db Quantas rodovias tem em cada estado?
 ```
 
-## 🛠️ Adicionando Seus Próprios Dados
+## Adicionando Seus Próprios Dados
 
 ### Opção 1: SQL Direto
 
@@ -258,7 +258,7 @@ docker-compose exec postgis shp2pgsql -I -s 4326 /tmp/meu_arquivo.shp geo.nova_t
 
 Use ferramentas como `ogr2ogr` ou bibliotecas Python (GeoPandas).
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Frontend não conecta ao PostGIS
 
@@ -293,7 +293,7 @@ docker-compose logs geoserver
 2. Verifique se as camadas foram publicadas
 3. Teste WMS: http://localhost:8080/geoserver/geo/wms?service=WMS&version=1.1.0&request=GetCapabilities
 
-## 📚 Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **Frontend**: Next.js 15, React 19, TypeScript
 - **UI**: TailwindCSS, shadcn/ui, Lucide Icons
@@ -303,7 +303,7 @@ docker-compose logs geoserver
 - **IA**: OpenAI GPT-4
 - **Containerização**: Docker, Docker Compose
 
-## 🤝 Contribuindo
+## Contribuindo
 
 Sinta-se à vontade para:
 - Adicionar mais dados geoespaciais
@@ -311,11 +311,11 @@ Sinta-se à vontade para:
 - Criar novos componentes de visualização
 - Otimizar performance
 
-## 📄 Licença
+## Licença
 
 MIT License - use livremente!
 
-## 🔗 Links Úteis
+## Links Úteis
 
 - [PostGIS Documentation](https://postgis.net/documentation/)
 - [GeoServer Documentation](https://docs.geoserver.org/)
@@ -323,6 +323,4 @@ MIT License - use livremente!
 - [MCP Protocol](https://modelcontextprotocol.io/)
 - [Next.js Documentation](https://nextjs.org/docs)
 
----
 
-**Desenvolvido com ❤️ para consultas geoespaciais inteligentes**
