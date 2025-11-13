@@ -26,7 +26,7 @@ Sistema de chatbot inteligente para consulta de dados geoespaciais usando lingua
 └─────────────┘                          └──────────────┘
 ```
 
-## 📋 Pré-requisitos
+## Pré-requisitos
 
 - Docker e Docker Compose
 - **OpenAI API Key** OU **Google Gemini API Key** (para o chatbot funcionar)
